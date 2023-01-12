@@ -1,5 +1,6 @@
 class ApiGetLinks:
     GET_AUTHORIZED_USER_ID = 'https://playground.learnqa.ru/api/user/auth'
+    GET_USER_INFO_BY_ID = "https://playground.learnqa.ru/api/user/"
 
 
 class ApiPostLinks:
