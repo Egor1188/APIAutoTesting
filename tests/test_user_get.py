@@ -30,4 +30,3 @@ class TestUserGet(BaseCase):
                                  )
         names = ["username", "email", "firstName", "lastName"]
         Assertions.check_json_has_keys(response2, names)
-
