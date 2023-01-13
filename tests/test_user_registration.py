@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import requests
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
@@ -7,16 +5,11 @@ from testdata.userdata import UserData
 from endpoints.endpoints import ApiPostLinks
 from testdata.proxy import Proxy
 
+
 class TestUserRegistration(BaseCase):
-    def setup(self):
-        base_part = "test"
-        domain = "@example.com"
-        random_part = datetime.now().strftime("%m%d%Y%H%M%S")
-        self.email = f"{base_part}{random_part}{domain}"
 
     def test_create_user_successfully(self):
-        data = UserData.USER_WITH_EXISTING_EMAIL.copy()
-        data["email"] = self.email
+        data = self.prepare_registration_data()
 
         response = requests.post(ApiPostLinks.CREATE_USER, data=data, proxies=Proxy.PROXY)
         Assertions.check_status_code(response, 200)

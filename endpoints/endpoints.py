@@ -6,3 +6,6 @@ class ApiGetLinks:
 class ApiPostLinks:
     USER_LOGIN = 'https://playground.learnqa.ru/api/user/login'
     CREATE_USER = 'https://playground.learnqa.ru/api/user/'
+
+class ApiPutLinks:
+    UPDATE_USER = "https://playground.learnqa.ru/api/user/"

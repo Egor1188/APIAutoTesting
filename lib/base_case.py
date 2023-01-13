@@ -1,4 +1,5 @@
 import json.decoder
+from datetime import datetime
 
 import requests
 from requests import Response
@@ -6,6 +7,7 @@ from requests import Response
 from endpoints.endpoints import ApiPostLinks, ApiGetLinks
 
 from testdata.proxy import Proxy
+from testdata.userdata import UserData
 
 
 class BaseCase:
@@ -26,6 +28,16 @@ class BaseCase:
 
         assert name in response_as_dict, f"Response JSON doesn't have key {name}"
         return response_as_dict[name]
+
+    def prepare_registration_data(self, email=None):
+        if email is None:
+            base_part = "test"
+            domain = "@example.com"
+            random_part = datetime.now().strftime("%m%d%Y%H%M%S")
+            email = f"{base_part}{random_part}{domain}"
+        data = UserData.USER_WITH_EXISTING_EMAIL.copy()
+        data["email"] = email
+        return data
 
 
 

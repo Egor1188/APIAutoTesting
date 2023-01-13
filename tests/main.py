@@ -33,20 +33,22 @@ payload = {
 # print(response_headers.text)
 # print(response_headers.headers)
 
-payload = {
-    "login": "secret_login",
-    "password": "secret_pass"
-}
-response_auth_cookie1 = requests.post("https://playground.learnqa.ru/api/get_auth_cookie", data=payload, proxies=proxy)
-print(response_auth_cookie1.text)
-print(response_auth_cookie1.status_code)
-print(response_auth_cookie1.cookies)
-print(dict(response_auth_cookie1.cookies))
-cookie_value = response_auth_cookie1.cookies.get('auth_cookie')
-cookies = {}
-if cookie_value is not None:
-    cookies.update({'auth_cookie': cookie_value})
-response_auth_cookie2 = requests.post("https://playground.learnqa.ru/api/check_auth_cookie", proxies=proxy, cookies=cookies)
-print(response_auth_cookie2.text)
-print(response_auth_cookie2.status_code)
+# payload = {
+#     "login": "secret_login",
+#     "password": "secret_pass"
+# }
+# response_auth_cookie1 = requests.post("https://playground.learnqa.ru/api/get_auth_cookie", data=payload, proxies=proxy)
+# print(response_auth_cookie1.text)
+# print(response_auth_cookie1.status_code)
+# print(response_auth_cookie1.cookies)
+# print(dict(response_auth_cookie1.cookies))
+# cookie_value = response_auth_cookie1.cookies.get('auth_cookie')
+# cookies = {}
+# if cookie_value is not None:
+#     cookies.update({'auth_cookie': cookie_value})
+# response_auth_cookie2 = requests.post("https://playground.learnqa.ru/api/check_auth_cookie", proxies=proxy, cookies=cookies)
+# print(response_auth_cookie2.text)
+# print(response_auth_cookie2.status_code)
+
+
 
