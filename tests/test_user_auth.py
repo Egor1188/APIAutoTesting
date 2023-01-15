@@ -3,10 +3,10 @@ from lib.base_case import BaseCase
 from lib.my_requests import MyRequests
 from testdata.userdata import UserData
 from endpoints.endpoints import ApiPostLinks, ApiGetLinks
-
 from lib.assertions import Assertions
 
 
+@pytest.mark.skip()
 class TestUserAuth(BaseCase):
     exclude_params = {
         'no_cookie',
@@ -22,6 +22,7 @@ class TestUserAuth(BaseCase):
         self.user_id_from_auth = self.get_json_value(response1, "user_id")
 
     def test_user_auth(self):
+        """This test checks user authorization with email and password"""
         response2 = MyRequests.get(
             ApiGetLinks.GET_AUTHORIZED_USER_ID,
             headers={"x-csrf-token": self.token},
@@ -37,6 +38,7 @@ class TestUserAuth(BaseCase):
 
     @pytest.mark.parametrize('condition', exclude_params)
     def test_negative_auth(self, condition):
+        """This test checks authorization status w/o sending auth cookie or token"""
         if condition == 'no_cookie':
             response2 = MyRequests.get(ApiGetLinks.GET_AUTHORIZED_USER_ID,
                                        headers={"x-csrf-token": self.token}

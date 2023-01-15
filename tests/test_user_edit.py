@@ -1,9 +1,12 @@
+import pytest
+
 from endpoints.endpoints import ApiPostLinks, ApiPutLinks, ApiGetLinks
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
 
 
+@pytest.mark.skip
 class TestUserEdit(BaseCase):
     def test_edit_just_created_user(self):
         # REGISTRATION

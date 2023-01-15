@@ -1,5 +1,6 @@
-class BaseUrl:
-    BASE_URL = "https://playground.learnqa.ru/api"
+from enviroment import ENV_OBJECT
+# "https://playground.learnqa.ru/api"
+BASE_URL = ENV_OBJECT.get_base_url()
 
 
 class ApiGetLinks:

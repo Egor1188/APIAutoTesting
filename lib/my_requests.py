@@ -1,5 +1,5 @@
 import requests
-from endpoints.endpoints import BaseUrl
+from endpoints import endpoints
 from lib.logger import Logger
 from testdata.proxy import Proxy
 
@@ -24,7 +24,7 @@ class MyRequests:
     @staticmethod
     def _send(url: str, data: dict, headers: dict, cookies: dict, method: str):
         proxy = Proxy.PROXY
-        url = f"{BaseUrl.BASE_URL}{url}"
+        url = f"{endpoints.BASE_URL}{url}"
 
         if headers is None:
             headers = {}
