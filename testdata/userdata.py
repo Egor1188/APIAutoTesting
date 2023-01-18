@@ -10,3 +10,13 @@ class UserData:
         'lastName': 'testLastname',
         'email': 'vinkotov@example.com'
     }
+    USER_KEYS = ["username", "email", "firstName", "lastName"]
+
+
+class InvalidUserData:
+    INVALID_EMAILS = [
+        "test12345example.com",
+        "test12345@examplecom",
+        "test12345examplecom",
+
+    ]

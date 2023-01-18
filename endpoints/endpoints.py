@@ -18,3 +18,7 @@ class ApiPutLinks:
     # id is required
     UPDATE_USER = "/user/"
 
+
+class ApiDeleteLinks:
+    # id is required
+    DELETE_USER_BY_ID = "/user/"

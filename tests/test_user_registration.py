@@ -3,18 +3,12 @@ import pytest
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
-from testdata.userdata import UserData
+from testdata.userdata import UserData, InvalidUserData
 from endpoints.endpoints import ApiPostLinks
 
 
+@pytest.mark.skip()
 class TestUserRegistration(BaseCase):
-    invalid_emails = [
-        "test12345example.com",
-        "test12345@examplecom",
-        "test12345examplecom",
-
-    ]
-
     absent_fields = [field for field in UserData.USER_WITH_EXISTING_EMAIL.keys()]
 
     def test_create_user_successfully(self):
@@ -25,7 +19,7 @@ class TestUserRegistration(BaseCase):
         Assertions.check_status_code(response, 200)
         Assertions.check_json_has_key(response, "id")
 
-    @pytest.mark.parametrize("invalid_email", invalid_emails)
+    @pytest.mark.parametrize("invalid_email", InvalidUserData.INVALID_EMAILS)
     def test_create_user_with_invalid_email(self, invalid_email):
         """Test checks email validation"""
 

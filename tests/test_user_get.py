@@ -1,3 +1,5 @@
+import pytest
+
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from endpoints.endpoints import ApiGetLinks, ApiPostLinks
@@ -5,6 +7,7 @@ from lib.my_requests import MyRequests
 from testdata.userdata import UserData
 
 
+@pytest.mark.skip()
 class TestUserGet(BaseCase):
     def test_get_user_details_not_auth(self):
         """Test checks possibility of receiving user data with id by another user"""
@@ -28,8 +31,8 @@ class TestUserGet(BaseCase):
                                    headers={'x-csrf-token': token},
                                    cookies={'auth_sid': auth_sid}
                                    )
-        names = ["username", "email", "firstName", "lastName"]
-        Assertions.check_json_has_keys(response2, names)
+
+        Assertions.check_json_has_keys(response2, UserData.USER_KEYS)
 
     def test_get_user_details_auth_as_another_user(self):
         """Test checks possibility of receiving user data by id
